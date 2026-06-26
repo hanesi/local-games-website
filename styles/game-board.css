@@ -1,0 +1,167 @@
+/* Game board layout and piles */
+
+.game-board {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Top row: Stock, Waste, Foundations */
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.stock-waste-area {
+  display: flex;
+  gap: 20px;
+}
+
+.foundations-area {
+  display: flex;
+  gap: 12px;
+}
+
+/* Piles */
+.pile {
+  position: relative;
+  min-width: 80px;
+  min-height: 112px;
+  transition: all 0.2s ease;
+}
+
+.stock-pile,
+.waste-pile {
+  cursor: pointer;
+}
+
+.waste-pile {
+  min-width: 140px; /* Accommodate 3 overlapping cards */
+}
+
+/* Tableaus */
+.tableaus-area {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.tableau-pile {
+  min-height: 400px;
+}
+
+/* Valid drop target */
+.valid-target {
+  background: rgba(34, 197, 94, 0.1);
+  border-radius: 8px;
+}
+
+/* Responsive layout */
+@media (max-width: 1024px) {
+  .pile {
+    min-width: 60px;
+    min-height: 84px;
+  }
+
+  .waste-pile {
+    min-width: 100px;
+  }
+
+  .tableau-pile {
+    min-height: 300px;
+  }
+
+  .stock-waste-area {
+    gap: 15px;
+  }
+
+  .foundations-area,
+  .tableaus-area {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .game-board {
+    padding: 20px;
+  }
+
+  .top-row {
+    margin-bottom: 30px;
+  }
+
+  .pile {
+    min-width: 45px;
+    min-height: 63px;
+  }
+
+  .waste-pile {
+    min-width: 80px;
+  }
+
+  .tableau-pile {
+    min-height: 250px;
+  }
+
+  .stock-waste-area {
+    gap: 10px;
+  }
+
+  .foundations-area,
+  .tableaus-area {
+    gap: 6px;
+  }
+}
+
+@media (max-width: 640px) {
+  .game-board {
+    padding: 15px;
+  }
+
+  .top-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .stock-waste-area,
+  .foundations-area {
+    justify-content: center;
+  }
+
+  .foundations-area {
+    gap: 8px;
+  }
+
+  .tableaus-area {
+    gap: 4px;
+  }
+
+  .tableau-pile {
+    min-height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-board {
+    padding: 10px;
+  }
+
+  .pile {
+    min-width: 40px;
+    min-height: 56px;
+  }
+
+  .waste-pile {
+    min-width: 70px;
+  }
+
+  .tableaus-area {
+    gap: 3px;
+  }
+
+  .tableau-pile {
+    min-height: 180px;
+  }
+}

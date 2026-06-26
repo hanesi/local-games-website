@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Play Klondike Solitaire online - Classic card game with drag-and-drop interface">
+  <title>Klondike Solitaire</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/cards.css">
+  <link rel="stylesheet" href="styles/game-board.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Klondike Solitaire</h1>
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-label">Moves:</span>
+          <span id="moves" class="stat-value">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Time:</span>
+          <span id="timer" class="stat-value">00:00</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <button id="new-game-btn" class="btn btn-primary">New Game</button>
+      <button id="undo-btn" class="btn" disabled>Undo</button>
+      <button id="redo-btn" class="btn" disabled>Redo</button>
+      <button id="auto-complete-btn" class="btn" disabled>Auto-Complete</button>
+    </div>
+
+    <div class="game-board">
+      <!-- Top row: Stock, Waste, and Foundations -->
+      <div class="top-row">
+        <div class="stock-waste-area">
+          <div id="stock" class="pile stock-pile" data-pile-type="stock"></div>
+          <div id="waste" class="pile waste-pile" data-pile-type="waste"></div>
+        </div>
+
+        <div class="foundations-area">
+          <div id="foundation-0" class="pile foundation-pile" data-pile-type="foundation" data-pile-index="0"></div>
+          <div id="foundation-1" class="pile foundation-pile" data-pile-type="foundation" data-pile-index="1"></div>
+          <div id="foundation-2" class="pile foundation-pile" data-pile-type="foundation" data-pile-index="2"></div>
+          <div id="foundation-3" class="pile foundation-pile" data-pile-type="foundation" data-pile-index="3"></div>
+        </div>
+      </div>
+
+      <!-- Bottom row: Tableaus -->
+      <div class="tableaus-area">
+        <div id="tableau-0" class="pile tableau-pile" data-pile-type="tableau" data-pile-index="0"></div>
+        <div id="tableau-1" class="pile tableau-pile" data-pile-type="tableau" data-pile-index="1"></div>
+        <div id="tableau-2" class="pile tableau-pile" data-pile-type="tableau" data-pile-index="2"></div>
+        <div id="tableau-3" class="pile tableau-pile" data-pile-type="tableau" data-pile-index="3"></div>
+        <div id="tableau-4" class="pile tableau-pile" data-pile-type="tableau" data-pile-index="4"></div>
+        <div id="tableau-5" class="pile tableau-pile" data-pile-type="tableau" data-pile-index="5"></div>
+        <div id="tableau-6" class="pile tableau-pile" data-pile-type="tableau" data-pile-index="6"></div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>Drag cards to move them. Double-click to auto-move to foundation.</p>
+      <p>Draw 3 cards from the stock. Kings can only be placed on empty tableau columns.</p>
+    </footer>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

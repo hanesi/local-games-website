@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: klondike-solitaire
+    env: static
+    staticPublishPath: .
+    buildCommand: echo "No build required"
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=3600
