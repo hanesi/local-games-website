@@ -52,7 +52,7 @@ export class Renderer {
     const wasteEl = this.elements.waste;
     wasteEl.innerHTML = '';
 
-    const visibleCards = this.gameState.waste.getVisibleCards();
+    const visibleCards = this.gameState.waste.getVisibleCards(this.gameState.drawCount);
 
     if (visibleCards.length === 0) {
       const emptyEl = document.createElement('div');

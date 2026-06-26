@@ -62,10 +62,50 @@ body {
 /* Controls */
 .controls {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.control-row {
+  display: flex;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 30px;
   flex-wrap: wrap;
+  align-items: center;
+}
+
+.draw-mode-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  color: #764ba2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.draw-mode-selector label {
+  font-size: 1rem;
+}
+
+.draw-mode-select {
+  padding: 4px 8px;
+  border: 2px solid #764ba2;
+  border-radius: 4px;
+  background: white;
+  color: #764ba2;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+}
+
+.draw-mode-select:focus {
+  border-color: #667eea;
 }
 
 .btn {
@@ -112,8 +152,39 @@ body {
   margin: 5px 0;
 }
 
+/* Visibility utilities */
+.desktop-only {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+}
+
+/* Remove hover effects on touch devices */
+@media (hover: none) {
+  .btn:hover:not(:disabled) {
+    transform: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
   .header h1 {
     font-size: 2rem;
   }
@@ -124,12 +195,27 @@ body {
   }
 
   .controls {
+    gap: 10px;
+  }
+
+  .control-row {
     gap: 8px;
   }
 
   .btn {
-    padding: 8px 16px;
-    font-size: 0.9rem;
+    padding: 12px 20px;
+    font-size: 1rem;
+    min-height: 44px; /* iOS touch target size */
+  }
+
+  .draw-mode-selector {
+    padding: 10px 16px;
+    min-height: 44px;
+  }
+
+  .draw-mode-select {
+    font-size: 1rem;
+    padding: 6px 10px;
   }
 
   .footer {
@@ -138,8 +224,17 @@ body {
 }
 
 @media (max-width: 480px) {
+  body {
+    padding: 8px;
+  }
+
+  .header {
+    margin-bottom: 15px;
+  }
+
   .header h1 {
     font-size: 1.5rem;
+    margin-bottom: 10px;
   }
 
   .stats {
@@ -148,11 +243,24 @@ body {
   }
 
   .controls {
+    gap: 8px;
+  }
+
+  .control-row {
     gap: 6px;
   }
 
   .btn {
-    padding: 6px 12px;
-    font-size: 0.85rem;
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    min-height: 44px;
+  }
+
+  .draw-mode-selector {
+    font-size: 0.9rem;
+  }
+
+  .draw-mode-select {
+    font-size: 0.9rem;
   }
 }

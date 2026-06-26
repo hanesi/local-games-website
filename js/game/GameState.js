@@ -9,12 +9,13 @@ import { createDeck, shuffle } from '../utils/helpers.js';
 import { ALL_SUITS, DRAW_COUNT } from '../utils/constants.js';
 
 export class GameState {
-  constructor() {
+  constructor(drawCount = DRAW_COUNT) {
     this.stock = new Stock();
     this.waste = new Waste();
     this.foundations = ALL_SUITS.map(suit => new Foundation(suit));
     this.tableaus = Array.from({ length: 7 }, (_, i) => new Tableau(i));
 
+    this.drawCount = drawCount; // 1 or 3
     this.moveCount = 0;
     this.startTime = null;
     this.gameWon = false;
@@ -62,12 +63,20 @@ export class GameState {
    */
   drawFromStock() {
     if (this.stock.canDraw()) {
-      const cards = this.stock.draw(DRAW_COUNT);
+      const cards = this.stock.draw(this.drawCount);
       this.waste.addFromStock(cards);
       this.incrementMoveCount();
       return true;
     }
     return false;
+  }
+
+  /**
+   * Sets the draw count (1 or 3)
+   * @param {number} count - Number of cards to draw (1 or 3)
+   */
+  setDrawCount(count) {
+    this.drawCount = count === 1 ? 1 : 3;
   }
 
   /**
@@ -223,7 +232,8 @@ export class GameState {
       tableaus: this.tableaus.map(t => t.getCards().map(c => c.clone())),
       moveCount: this.moveCount,
       startTime: this.startTime,
-      gameWon: this.gameWon
+      gameWon: this.gameWon,
+      drawCount: this.drawCount
     };
   }
 
@@ -243,5 +253,6 @@ export class GameState {
     this.moveCount = snapshot.moveCount;
     this.startTime = snapshot.startTime;
     this.gameWon = snapshot.gameWon;
+    this.drawCount = snapshot.drawCount || 3;
   }
 }

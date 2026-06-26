@@ -17,10 +17,30 @@
   cursor: grabbing;
 }
 
+.card.selected {
+  border: 3px solid #fbbf24;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.6), 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  transform: translateY(-6px);
+}
+
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   z-index: 10;
+}
+
+/* Remove hover on touch devices */
+@media (hover: none) {
+  .card:hover {
+    transform: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .card.selected:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.6), 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
 }
 
 /* Face-up card */
@@ -131,28 +151,48 @@
 @media (max-width: 768px) {
   .card,
   .card-empty {
-    width: 45px;
-    height: 63px;
+    width: 55px;
+    height: 77px;
   }
 
   .card.face-up {
-    padding: 4px;
+    padding: 6px;
   }
 
   .card-rank {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
   }
 
   .card-suit {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 
   .card-empty {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card,
+  .card-empty {
+    width: 50px;
+    height: 70px;
   }
 
-  .card:hover {
-    transform: translateY(-2px);
+  .card.face-up {
+    padding: 5px;
+  }
+
+  .card-rank {
+    font-size: 1rem;
+  }
+
+  .card-suit {
+    font-size: 1.3rem;
+  }
+
+  .card-empty {
+    font-size: 1.3rem;
   }
 }
 

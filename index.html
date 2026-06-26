@@ -26,10 +26,21 @@
     </header>
 
     <div class="controls">
-      <button id="new-game-btn" class="btn btn-primary">New Game</button>
-      <button id="undo-btn" class="btn" disabled>Undo</button>
-      <button id="redo-btn" class="btn" disabled>Redo</button>
-      <button id="auto-complete-btn" class="btn" disabled>Auto-Complete</button>
+      <div class="control-row">
+        <button id="new-game-btn" class="btn btn-primary">New Game</button>
+        <div class="draw-mode-selector">
+          <label for="draw-mode">Draw:</label>
+          <select id="draw-mode" class="draw-mode-select">
+            <option value="3" selected>Draw 3</option>
+            <option value="1">Draw 1</option>
+          </select>
+        </div>
+      </div>
+      <div class="control-row">
+        <button id="undo-btn" class="btn" disabled>Undo</button>
+        <button id="redo-btn" class="btn" disabled>Redo</button>
+        <button id="auto-complete-btn" class="btn" disabled>Auto-Complete</button>
+      </div>
     </div>
 
     <div class="game-board">
@@ -61,8 +72,9 @@
     </div>
 
     <footer class="footer">
-      <p>Drag cards to move them. Double-click to auto-move to foundation.</p>
-      <p>Draw 3 cards from the stock. Kings can only be placed on empty tableau columns.</p>
+      <p class="desktop-only">Drag cards or tap to select and tap destination to move.</p>
+      <p class="mobile-only">Tap to select cards, then tap destination to move.</p>
+      <p>Double-tap to auto-move to foundation. Kings go on empty columns.</p>
     </footer>
   </div>
 

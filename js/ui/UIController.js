@@ -39,8 +39,40 @@ export class UIController {
       autoCompleteBtn.addEventListener('click', () => this.handleAutoComplete());
     }
 
+    // Draw mode selector
+    const drawModeSelect = document.getElementById('draw-mode');
+    if (drawModeSelect) {
+      drawModeSelect.addEventListener('change', (e) => this.handleDrawModeChange(e));
+    }
+
     // Start timer
     this.startTimer();
+  }
+
+  /**
+   * Handles draw mode change
+   */
+  handleDrawModeChange(e) {
+    const newDrawCount = parseInt(e.target.value);
+    const currentDrawCount = this.gameState.drawCount;
+
+    if (newDrawCount !== currentDrawCount) {
+      if (this.gameState.moveCount > 0) {
+        if (confirm('Changing draw mode will start a new game. Continue?')) {
+          this.gameState.setDrawCount(newDrawCount);
+          this.gameState.dealNewGame();
+          this.historyManager.clear();
+          this.renderer.renderAll();
+          this.updateStats();
+          this.updateButtons();
+        } else {
+          // Reset select to current value
+          e.target.value = currentDrawCount;
+        }
+      } else {
+        this.gameState.setDrawCount(newDrawCount);
+      }
+    }
   }
 
   /**

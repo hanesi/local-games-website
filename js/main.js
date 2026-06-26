@@ -3,6 +3,7 @@
 import { GameState } from './game/GameState.js';
 import { Renderer } from './ui/Renderer.js';
 import { DragDropHandler } from './ui/DragDropHandler.js';
+import { TapHandler } from './ui/TapHandler.js';
 import { UIController } from './ui/UIController.js';
 import { AnimationManager } from './ui/AnimationManager.js';
 import { HistoryManager } from './history/HistoryManager.js';
@@ -17,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const animationManager = new AnimationManager();
   const historyManager = new HistoryManager(gameState);
   const dragDropHandler = new DragDropHandler(gameState, renderer, historyManager, animationManager);
+  const tapHandler = new TapHandler(gameState, renderer, historyManager);
   const uiController = new UIController(gameState, renderer, historyManager);
 
   // Deal initial game
@@ -24,7 +26,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize UI
   renderer.renderAll();
-  dragDropHandler.initialize();
+
+  // Detect if touch device and use appropriate handler
+  const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+  if (isTouchDevice) {
+    // On touch devices, use tap handler (better UX for mobile)
+    tapHandler.initialize();
+    console.log('Touch device detected - using tap controls');
+  } else {
+    // On desktop, use drag-and-drop
+    dragDropHandler.initialize();
+    console.log('Desktop detected - using drag-and-drop controls');
+  }
+
   uiController.initialize();
   uiController.updateStats();
   uiController.updateButtons();
@@ -34,8 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
     state: gameState,
     renderer,
     historyManager,
-    uiController
+    uiController,
+    tapHandler,
+    dragDropHandler
   };
-
-  console.log('Klondike Solitaire initialized!');
 });

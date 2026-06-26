@@ -18,11 +18,12 @@ export class Waste extends Pile {
   }
 
   /**
-   * Gets the visible cards in waste (top 3 or fewer)
+   * Gets the visible cards in waste (top N or fewer based on draw count)
+   * @param {number} drawCount - Number of cards to show (1 or 3)
    * @returns {Card[]} Visible cards
    */
-  getVisibleCards() {
-    const visibleCount = Math.min(DRAW_COUNT, this.cards.length);
+  getVisibleCards(drawCount = DRAW_COUNT) {
+    const visibleCount = Math.min(drawCount, this.cards.length);
     return this.cards.slice(-visibleCount);
   }
 
