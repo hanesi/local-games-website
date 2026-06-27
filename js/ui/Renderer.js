@@ -46,6 +46,17 @@ export class Renderer {
   }
 
   /**
+   * Gets the horizontal offset for waste cards based on screen size
+   * @returns {number} Offset in pixels
+   */
+  getWasteCardOffset() {
+    const width = window.innerWidth;
+    if (width <= 480) return 14;
+    if (width <= 768) return 16;
+    return 20;
+  }
+
+  /**
    * Renders the waste pile
    */
   renderWaste() {
@@ -53,6 +64,7 @@ export class Renderer {
     wasteEl.innerHTML = '';
 
     const visibleCards = this.gameState.waste.getVisibleCards(this.gameState.drawCount);
+    const cardOffset = this.getWasteCardOffset();
 
     if (visibleCards.length === 0) {
       const emptyEl = document.createElement('div');
@@ -61,7 +73,7 @@ export class Renderer {
     } else {
       visibleCards.forEach((card, index) => {
         const cardEl = this.createCardElement(card);
-        cardEl.style.left = `${index * 20}px`;
+        cardEl.style.left = `${index * cardOffset}px`;
         cardEl.dataset.pileType = 'waste';
         cardEl.dataset.cardIndex = this.gameState.waste.size() - visibleCards.length + index;
 
@@ -120,6 +132,18 @@ export class Renderer {
   }
 
   /**
+   * Gets the vertical offset for tableau cards based on screen size
+   * @returns {number} Offset in pixels
+   */
+  getTableauCardOffset() {
+    const width = window.innerWidth;
+    if (width <= 480) return 15;
+    if (width <= 768) return 18;
+    if (width <= 1024) return 20;
+    return 25;
+  }
+
+  /**
    * Renders a single tableau pile
    * @param {number} index - Tableau index
    */
@@ -128,6 +152,7 @@ export class Renderer {
     tableauEl.innerHTML = '';
 
     const cards = this.gameState.tableaus[index].getCards();
+    const cardOffset = this.getTableauCardOffset();
 
     if (cards.length === 0) {
       const emptyEl = document.createElement('div');
@@ -138,7 +163,7 @@ export class Renderer {
     } else {
       cards.forEach((card, cardIndex) => {
         const cardEl = this.createCardElement(card, !card.faceUp);
-        cardEl.style.top = `${cardIndex * 25}px`;
+        cardEl.style.top = `${cardIndex * cardOffset}px`;
         cardEl.dataset.pileType = 'tableau';
         cardEl.dataset.pileIndex = index;
         cardEl.dataset.cardIndex = cardIndex;

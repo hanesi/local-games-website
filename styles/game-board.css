@@ -85,95 +85,100 @@
 
 @media (max-width: 768px) {
   .game-board {
-    padding: 15px;
+    padding: 12px 8px;
   }
 
   .top-row {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 
   .pile {
-    min-width: 55px;
-    min-height: 77px;
+    min-width: 48px;
+    min-height: 67px;
   }
 
   .waste-pile {
-    min-width: 95px;
+    min-width: 80px;
   }
 
   .tableau-pile {
-    min-height: 300px;
+    min-height: 280px;
   }
 
   .stock-waste-area {
-    gap: 12px;
+    gap: 8px;
   }
 
   .foundations-area,
   .tableaus-area {
-    gap: 8px;
+    gap: 6px;
   }
 }
 
 @media (max-width: 640px) {
   .game-board {
-    padding: 15px;
+    padding: 10px 6px;
   }
 
   .top-row {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .stock-waste-area,
-  .foundations-area {
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
+    gap: 6px;
+    margin-bottom: 15px;
+  }
+
+  .stock-waste-area {
+    gap: 6px;
   }
 
   .foundations-area {
-    gap: 8px;
+    gap: 6px;
   }
 
   .tableaus-area {
-    gap: 4px;
-  }
-
-  .tableau-pile {
-    min-height: 200px;
-  }
-}
-
-@media (max-width: 480px) {
-  .game-board {
-    padding: 8px;
-  }
-
-  .pile {
-    min-width: 50px;
-    min-height: 70px;
-  }
-
-  .waste-pile {
-    min-width: 85px;
-  }
-
-  .tableaus-area {
-    gap: 4px;
+    gap: 3px;
   }
 
   .tableau-pile {
     min-height: 250px;
   }
+}
+
+@media (max-width: 480px) {
+  .game-board {
+    padding: 8px 4px;
+  }
+
+  .pile {
+    min-width: 44px;
+    min-height: 62px;
+  }
+
+  .waste-pile {
+    min-width: 72px;
+  }
+
+  .tableaus-area {
+    gap: 2px;
+  }
+
+  .tableau-pile {
+    min-height: 280px;
+  }
 
   .top-row {
-    margin-bottom: 20px;
+    margin-bottom: 12px;
+    gap: 5px;
   }
 
   .stock-waste-area {
-    gap: 10px;
+    gap: 5px;
   }
 
   .foundations-area {
-    gap: 6px;
+    gap: 5px;
   }
 }
