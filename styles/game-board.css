@@ -111,9 +111,12 @@
     gap: 8px;
   }
 
-  .foundations-area,
-  .tableaus-area {
+  .foundations-area {
     gap: 6px;
+  }
+
+  .tableaus-area {
+    gap: 8px;
   }
 }
 
@@ -139,7 +142,7 @@
   }
 
   .tableaus-area {
-    gap: 3px;
+    gap: 6px;
   }
 
   .tableau-pile {
@@ -162,7 +165,7 @@
   }
 
   .tableaus-area {
-    gap: 2px;
+    gap: 5px;
   }
 
   .tableau-pile {
