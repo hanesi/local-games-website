@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debug Test</title>
+</head>
+<body>
+  <h1>Debug Test Page</h1>
+  <button id="test-btn">Test Button</button>
+  <div id="output"></div>
+
+  <script type="module">
+    import { GameState } from './js/game/GameState.js';
+
+    const output = document.getElementById('output');
+    const btn = document.getElementById('test-btn');
+
+    output.innerHTML = '<p>Modules loaded successfully!</p>';
+    console.log('Modules loaded');
+
+    btn.addEventListener('click', () => {
+      output.innerHTML += '<p>Button clicked!</p>';
+      console.log('Button clicked');
+
+      try {
+        const gameState = new GameState();
+        gameState.dealNewGame();
+        output.innerHTML += '<p>GameState created and dealt!</p>';
+        console.log('GameState:', gameState);
+      } catch (error) {
+        output.innerHTML += `<p style="color: red;">Error: ${error.message}</p>`;
+        console.error('Error:', error);
+      }
+    });
+  </script>
+</body>
+</html>

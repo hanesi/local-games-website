@@ -15,10 +15,16 @@ export class UIController {
    * Initializes UI controls
    */
   initialize() {
+    console.log('Initializing UI controls...');
+
     // New Game button
     const newGameBtn = document.getElementById('new-game-btn');
+    console.log('New game button:', newGameBtn);
     if (newGameBtn) {
       newGameBtn.addEventListener('click', () => this.handleNewGame());
+      console.log('New game button listener added');
+    } else {
+      console.error('New game button not found!');
     }
 
     // Undo button
@@ -79,13 +85,25 @@ export class UIController {
    * Handles new game
    */
   handleNewGame() {
-    if (confirm('Start a new game? Current progress will be lost.')) {
-      this.gameState.dealNewGame();
-      this.historyManager.clear();
-      this.renderer.renderAll();
-      this.updateStats();
-      this.updateButtons();
+    console.log('New game button clicked');
+
+    // Only confirm if game has been started
+    const shouldConfirm = this.gameState.moveCount > 0;
+
+    if (shouldConfirm) {
+      if (!confirm('Start a new game? Current progress will be lost.')) {
+        console.log('New game cancelled');
+        return;
+      }
     }
+
+    console.log('Starting new game...');
+    this.gameState.dealNewGame();
+    this.historyManager.clear();
+    this.renderer.renderAll();
+    this.updateStats();
+    this.updateButtons();
+    console.log('New game started');
   }
 
   /**
