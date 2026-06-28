@@ -3,81 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Play Klondike Solitaire online - Classic card game with drag-and-drop interface">
-  <title>Klondike Solitaire</title>
+  <meta name="description" content="Free online games - Play Klondike Solitaire, Connect 4, and more!">
+  <title>Free Games - Solitaire, Connect 4 & More</title>
   <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="styles/cards.css">
-  <link rel="stylesheet" href="styles/game-board.css">
+  <link rel="stylesheet" href="styles/home.css">
 </head>
 <body>
   <div class="container">
     <header class="header">
-      <h1>Klondike Solitaire</h1>
-      <div class="stats">
-        <div class="stat">
-          <span class="stat-label">Moves:</span>
-          <span id="moves" class="stat-value">0</span>
-        </div>
-        <div class="stat">
-          <span class="stat-label">Time:</span>
-          <span id="timer" class="stat-value">00:00</span>
-        </div>
-      </div>
+      <h1>🎮 Game Collection</h1>
+      <p class="subtitle">Choose your game and start playing!</p>
     </header>
 
-    <div class="controls">
-      <div class="control-row">
-        <button id="new-game-btn" class="btn btn-primary">New Game</button>
-        <div class="draw-mode-selector">
-          <label for="draw-mode">Draw:</label>
-          <select id="draw-mode" class="draw-mode-select">
-            <option value="3" selected>Draw 3</option>
-            <option value="1">Draw 1</option>
-          </select>
+    <div class="games-grid">
+      <!-- Solitaire Card -->
+      <a href="solitaire.html" class="game-card">
+        <div class="game-icon">♠️</div>
+        <h2>Klondike Solitaire</h2>
+        <p>Classic card game with draw-1 or draw-3 modes</p>
+        <div class="game-features">
+          <span class="feature">Undo/Redo</span>
+          <span class="feature">Auto-complete</span>
+          <span class="feature">Mobile-friendly</span>
         </div>
-      </div>
-      <div class="control-row">
-        <button id="undo-btn" class="btn" disabled>Undo</button>
-        <button id="redo-btn" class="btn" disabled>Redo</button>
-        <button id="auto-complete-btn" class="btn" disabled>Auto-Complete</button>
-      </div>
-    </div>
+        <button class="play-btn">Play Now</button>
+      </a>
 
-    <div class="game-board">
-      <!-- Top row: Stock, Waste, and Foundations -->
-      <div class="top-row">
-        <div class="stock-waste-area">
-          <div id="stock" class="pile stock-pile" data-pile-type="stock"></div>
-          <div id="waste" class="pile waste-pile" data-pile-type="waste"></div>
+      <!-- Connect 4 Card -->
+      <a href="connect4.html" class="game-card">
+        <div class="game-icon">🔴</div>
+        <h2>Connect 4</h2>
+        <p>Drop discs and connect four in a row to win</p>
+        <div class="game-features">
+          <span class="feature">2 Players</span>
+          <span class="feature">Win Detection</span>
+          <span class="feature">Mobile-friendly</span>
         </div>
+        <button class="play-btn">Play Now</button>
+      </a>
 
-        <div class="foundations-area">
-          <div id="foundation-0" class="pile foundation-pile" data-pile-type="foundation" data-pile-index="0"></div>
-          <div id="foundation-1" class="pile foundation-pile" data-pile-type="foundation" data-pile-index="1"></div>
-          <div id="foundation-2" class="pile foundation-pile" data-pile-type="foundation" data-pile-index="2"></div>
-          <div id="foundation-3" class="pile foundation-pile" data-pile-type="foundation" data-pile-index="3"></div>
-        </div>
-      </div>
-
-      <!-- Bottom row: Tableaus -->
-      <div class="tableaus-area">
-        <div id="tableau-0" class="pile tableau-pile" data-pile-type="tableau" data-pile-index="0"></div>
-        <div id="tableau-1" class="pile tableau-pile" data-pile-type="tableau" data-pile-index="1"></div>
-        <div id="tableau-2" class="pile tableau-pile" data-pile-type="tableau" data-pile-index="2"></div>
-        <div id="tableau-3" class="pile tableau-pile" data-pile-type="tableau" data-pile-index="3"></div>
-        <div id="tableau-4" class="pile tableau-pile" data-pile-type="tableau" data-pile-index="4"></div>
-        <div id="tableau-5" class="pile tableau-pile" data-pile-type="tableau" data-pile-index="5"></div>
-        <div id="tableau-6" class="pile tableau-pile" data-pile-type="tableau" data-pile-index="6"></div>
+      <!-- Coming Soon Card -->
+      <div class="game-card coming-soon">
+        <div class="game-icon">🎯</div>
+        <h2>More Games Coming</h2>
+        <p>Chess, Checkers, Tic-Tac-Toe and more!</p>
+        <div class="coming-soon-badge">Coming Soon</div>
       </div>
     </div>
 
     <footer class="footer">
-      <p class="desktop-only">Drag cards or tap to select and tap destination to move.</p>
-      <p class="mobile-only">Tap to select cards, then tap destination to move.</p>
-      <p>Double-tap to auto-move to foundation. Kings go on empty columns.</p>
+      <p>All games are free to play. No downloads required!</p>
     </footer>
   </div>
-
-  <script type="module" src="js/main.js"></script>
 </body>
 </html>

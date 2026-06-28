@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Play Connect 4 online - Drop discs and connect four in a row!">
+  <title>Connect 4 - Free Online Game</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/connect4.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Connect 4</h1>
+      <div class="game-status">
+        <div class="current-turn">
+          <span class="label">Current Turn:</span>
+          <span id="current-player" class="player-indicator red">Red</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <button id="back-btn" class="btn">← Back</button>
+      <button id="new-game-btn" class="btn btn-primary">New Game</button>
+      <button id="undo-btn" class="btn" disabled>Undo</button>
+    </div>
+
+    <div class="game-container">
+      <div id="game-message" class="game-message" style="display: none;"></div>
+
+      <div class="board-wrapper">
+        <div id="board" class="board"></div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>Click a column to drop your disc. Connect four in a row to win!</p>
+    </footer>
+  </div>
+
+  <script type="module" src="js/connect4/main.js"></script>
+</body>
+</html>
