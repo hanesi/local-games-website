@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Play Dots and Boxes online - Connect dots to complete boxes!">
+  <title>Dots and Boxes - Free Online Game</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/dotsboxes.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Dots and Boxes</h1>
+      <div class="game-status">
+        <div class="score-display">
+          <div class="player-score red">
+            <span class="score-label">Red:</span>
+            <span id="red-score" class="score-value">0</span>
+          </div>
+          <div class="current-turn">
+            <span id="current-player" class="player-indicator red">Red</span>
+          </div>
+          <div class="player-score blue">
+            <span class="score-label">Blue:</span>
+            <span id="blue-score" class="score-value">0</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <div class="control-row">
+        <button id="back-btn" class="btn">← Back</button>
+        <button id="new-game-btn" class="btn btn-primary">New Game</button>
+        <div class="grid-size-selector">
+          <label for="grid-size">Grid:</label>
+          <select id="grid-size" class="grid-size-select">
+            <option value="5" selected>5×5</option>
+            <option value="6">6×6</option>
+            <option value="7">7×7</option>
+          </select>
+        </div>
+      </div>
+      <div class="control-row">
+        <button id="undo-btn" class="btn" disabled>Undo</button>
+      </div>
+    </div>
+
+    <div class="game-container">
+      <div id="game-message" class="game-message" style="display: none;"></div>
+
+      <div class="board-wrapper">
+        <div id="board" class="board"></div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>Click lines to connect dots. Complete a box to score a point and take another turn!</p>
+    </footer>
+  </div>
+
+  <script type="module" src="js/dotsboxes/main.js"></script>
+</body>
+</html>
