@@ -1,11 +1,12 @@
 // Drag-and-drop event handling
 
 export class DragDropHandler {
-  constructor(gameState, renderer, historyManager, animationManager) {
+  constructor(gameState, renderer, historyManager, animationManager, uiController) {
     this.gameState = gameState;
     this.renderer = renderer;
     this.historyManager = historyManager;
     this.animationManager = animationManager;
+    this.uiController = uiController;
     this.draggedCard = null;
     this.draggedFrom = null;
     this.draggedCount = 0;
@@ -60,6 +61,11 @@ export class DragDropHandler {
 
     this.renderer.renderStock();
     this.renderer.renderWaste();
+
+    if (this.uiController) {
+      this.uiController.updateStats();
+      this.uiController.updateButtons();
+    }
   }
 
   /**
@@ -92,6 +98,11 @@ export class DragDropHandler {
 
     if (this.gameState.autoMoveToFoundation(card, sourcePile)) {
       this.renderer.renderAll();
+
+      if (this.uiController) {
+        this.uiController.updateStats();
+        this.uiController.updateButtons();
+      }
 
       // Check win condition
       if (this.gameState.checkWinCondition()) {
@@ -174,6 +185,11 @@ export class DragDropHandler {
 
       if (this.gameState.moveCards(this.draggedFrom, targetPile, this.draggedCount)) {
         this.renderer.renderAll();
+
+        if (this.uiController) {
+          this.uiController.updateStats();
+          this.uiController.updateButtons();
+        }
 
         // Check win condition
         if (this.gameState.checkWinCondition()) {

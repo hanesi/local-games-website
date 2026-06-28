@@ -1,10 +1,11 @@
 // Tap-to-select handler for mobile touch interactions
 
 export class TapHandler {
-  constructor(gameState, renderer, historyManager) {
+  constructor(gameState, renderer, historyManager, uiController) {
     this.gameState = gameState;
     this.renderer = renderer;
     this.historyManager = historyManager;
+    this.uiController = uiController;
     this.selectedCard = null;
     this.selectedPile = null;
     this.selectedCount = 0;
@@ -54,6 +55,10 @@ export class TapHandler {
 
     this.renderer.renderStock();
     this.renderer.renderWaste();
+    if (this.uiController) {
+      this.uiController.updateStats();
+      this.uiController.updateButtons();
+    }
   }
 
   /**
@@ -168,6 +173,11 @@ export class TapHandler {
       this.clearSelection();
       this.renderer.renderAll();
 
+      if (this.uiController) {
+        this.uiController.updateStats();
+        this.uiController.updateButtons();
+      }
+
       // Check win condition
       if (this.gameState.checkWinCondition()) {
         this.handleWin();
@@ -194,6 +204,11 @@ export class TapHandler {
     if (this.gameState.autoMoveToFoundation(card, pile)) {
       this.clearSelection();
       this.renderer.renderAll();
+
+      if (this.uiController) {
+        this.uiController.updateStats();
+        this.uiController.updateButtons();
+      }
 
       // Check win condition
       if (this.gameState.checkWinCondition()) {

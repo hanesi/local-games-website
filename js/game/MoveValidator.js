@@ -95,12 +95,7 @@ export class MoveValidator {
    * @returns {boolean} True if all remaining cards can go to foundations
    */
   static isAutoCompleteAvailable(gameState) {
-    // Stock and waste should be empty for auto-complete
-    if (!gameState.stock.isEmpty() || !gameState.waste.isEmpty()) {
-      return false;
-    }
-
-    // All tableau cards should be face-up
+    // All tableau cards should be face-up for auto-complete
     for (const tableau of gameState.tableaus) {
       const faceDownCount = tableau.getCards().filter(c => !c.faceUp).length;
       if (faceDownCount > 0) {

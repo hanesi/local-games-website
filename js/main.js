@@ -17,15 +17,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const renderer = new Renderer(gameState);
   const animationManager = new AnimationManager();
   const historyManager = new HistoryManager(gameState);
-  const dragDropHandler = new DragDropHandler(gameState, renderer, historyManager, animationManager);
-  const tapHandler = new TapHandler(gameState, renderer, historyManager);
   const uiController = new UIController(gameState, renderer, historyManager);
+
+  // Create handlers with uiController reference
+  const dragDropHandler = new DragDropHandler(gameState, renderer, historyManager, animationManager, uiController);
+  const tapHandler = new TapHandler(gameState, renderer, historyManager, uiController);
 
   // Deal initial game
   gameState.dealNewGame();
 
   // Initialize UI
   renderer.renderAll();
+  uiController.initialize();
+  uiController.updateStats();
+  uiController.updateButtons();
 
   // Detect if touch device and use appropriate handler
   const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
@@ -39,10 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
     dragDropHandler.initialize();
     console.log('Desktop detected - using drag-and-drop controls');
   }
-
-  uiController.initialize();
-  uiController.updateStats();
-  uiController.updateButtons();
 
   // Make game accessible for debugging (optional)
   window.game = {
