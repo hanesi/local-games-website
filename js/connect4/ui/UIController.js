@@ -81,6 +81,13 @@ export class UIController {
    * Handles new game
    */
   handleNewGame() {
+    // Only confirm if game has been started and not finished
+    const shouldConfirm = this.gameState.moveHistory.length > 0 && !this.gameState.gameOver;
+
+    if (shouldConfirm && !confirm('Start a new game? Current progress will be lost.')) {
+      return;
+    }
+
     this.gameState.newGame();
     this.renderer.hideGameOver();
     this.renderer.renderAll();

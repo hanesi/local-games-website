@@ -79,8 +79,8 @@ export class UIController {
   handleNewGame() {
     console.log('New game button clicked');
 
-    // Only confirm if game has been started
-    const shouldConfirm = this.gameState.moveCount > 0;
+    // Only confirm if game has been started and not won
+    const shouldConfirm = this.gameState.moveCount > 0 && !this.gameState.gameWon;
 
     if (shouldConfirm) {
       if (!confirm('Start a new game? Current progress will be lost.')) {
