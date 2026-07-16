@@ -9,7 +9,7 @@ import { createDeck, shuffle } from '../utils/helpers.js';
 import { ALL_SUITS, DRAW_COUNT } from '../utils/constants.js';
 
 export class GameState {
-  constructor(drawCount = DRAW_COUNT) {
+  constructor(drawCount = 1) {
     this.stock = new Stock();
     this.waste = new Waste();
     this.foundations = ALL_SUITS.map(suit => new Foundation(suit));

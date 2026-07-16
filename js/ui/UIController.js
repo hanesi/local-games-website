@@ -63,21 +63,13 @@ export class UIController {
     const currentDrawCount = this.gameState.drawCount;
 
     if (newDrawCount !== currentDrawCount) {
-      if (this.gameState.moveCount > 0) {
-        if (confirm('Changing draw mode will start a new game. Continue?')) {
-          this.gameState.setDrawCount(newDrawCount);
-          this.gameState.dealNewGame();
-          this.historyManager.clear();
-          this.renderer.renderAll();
-          this.updateStats();
-          this.updateButtons();
-        } else {
-          // Reset select to current value
-          e.target.value = currentDrawCount;
-        }
-      } else {
-        this.gameState.setDrawCount(newDrawCount);
-      }
+      // Always start a new game when changing draw mode
+      this.gameState.setDrawCount(newDrawCount);
+      this.gameState.dealNewGame();
+      this.historyManager.clear();
+      this.renderer.renderAll();
+      this.updateStats();
+      this.updateButtons();
     }
   }
 
